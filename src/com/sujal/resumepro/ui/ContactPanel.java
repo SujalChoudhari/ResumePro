@@ -23,8 +23,8 @@ public class ContactPanel extends JPanel implements Progressable {
 
         // Create panel to hold the input fields
         JPanel inputPanel = Factory.createPanel();
-        inputPanel.setLayout(new GridLayout(3, 2, 10, 10));
-        inputPanel.add(new JLabel("Name:"));
+        inputPanel.setLayout(new GridLayout(4, 2, 10, 10));
+        inputPanel.add(new JLabel("Address:"));
         inputPanel.add(addressTextField);
         inputPanel.add(new JLabel("Email:"));
         
@@ -37,12 +37,20 @@ public class ContactPanel extends JPanel implements Progressable {
         emailHolder.add(emailTextField);
         inputPanel.add(new JLabel("Phone:"));
         
+        
+        
         JPanel phoneHolder = new JPanel();
-        phoneHolder.setLayout(new GridBagLayout());
         inputPanel.add(phoneHolder);
+        phoneHolder.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
         phoneTextField = Factory.createTextField(20);
         phoneHolder.add(phoneTextField);
+        
+        inputPanel.add(new JLabel("Website:"));
+        JPanel websiteHolderJPanel = Factory.createPanel();
+        JTextField websiteField = Factory.createTextField(20);
+        websiteHolderJPanel.add(websiteField);
+        inputPanel.add(websiteHolderJPanel);
 
         // Create panel to hold the title and input panel
         JPanel contentPanel = Factory.createPanel();
