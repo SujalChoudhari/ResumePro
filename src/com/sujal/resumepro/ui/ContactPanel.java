@@ -1,16 +1,20 @@
 package com.sujal.resumepro.ui;
 
 import com.sujal.resumepro.controller.InputGuide;
+import com.sujal.resumepro.converter.InformationManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ContactPanel extends JPanel implements Progressable {
+public class ContactPanel extends JPanel implements DataPanel {
 
     private InputGuide mInputGuide;
-    private JTextField emailTextField;
-    private JTextField phoneTextField;
+    private JTextArea mAddressTextArea;
+    private JTextField mEmailTextField;
+    private JTextField mPhoneTextField;
+    private JTextField mWebsiteTextField;
 
     public ContactPanel(InputGuide inputGuide) {
         mInputGuide = inputGuide;
@@ -18,14 +22,14 @@ public class ContactPanel extends JPanel implements Progressable {
 
         // Create components for the contact page
         JLabel titleLabel = Factory.createTitleLabel("Contact Information");
-        JTextArea addressTextField = Factory.createTextArea(4, 20);
-        addressTextField.setMinimumSize(addressTextField.getPreferredSize());
+        mAddressTextArea = Factory.createTextArea(4, 20);
+        mAddressTextArea.setMinimumSize(mAddressTextArea.getPreferredSize());
 
         // Create panel to hold the input fields
         JPanel inputPanel = Factory.createPanel();
         inputPanel.setLayout(new GridLayout(4, 2, 10, 10));
         inputPanel.add(new JLabel("Address:"));
-        inputPanel.add(addressTextField);
+        inputPanel.add(mAddressTextArea);
         inputPanel.add(new JLabel("Email:"));
         
         JPanel emailHolder = Factory.createPanel();
@@ -33,8 +37,8 @@ public class ContactPanel extends JPanel implements Progressable {
         inputPanel.add(emailHolder);
         emailHolder.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
-        emailTextField =Factory.createTextField(20);
-        emailHolder.add(emailTextField);
+        mEmailTextField =Factory.createTextField(20);
+        emailHolder.add(mEmailTextField);
         inputPanel.add(new JLabel("Phone:"));
         
         
@@ -43,13 +47,13 @@ public class ContactPanel extends JPanel implements Progressable {
         inputPanel.add(phoneHolder);
         phoneHolder.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
-        phoneTextField = Factory.createTextField(20);
-        phoneHolder.add(phoneTextField);
+        mPhoneTextField = Factory.createTextField(20);
+        phoneHolder.add(mPhoneTextField);
         
         inputPanel.add(new JLabel("Website:"));
         JPanel websiteHolderJPanel = Factory.createPanel();
-        JTextField websiteField = Factory.createTextField(20);
-        websiteHolderJPanel.add(websiteField);
+        mWebsiteTextField = Factory.createTextField(20);
+        websiteHolderJPanel.add(mWebsiteTextField);
         inputPanel.add(websiteHolderJPanel);
 
         // Create panel to hold the title and input panel
@@ -100,5 +104,13 @@ public class ContactPanel extends JPanel implements Progressable {
     @Override
     public void previous() {
         mInputGuide.previous();
+    }
+    
+    @Override
+    public void updateData() {
+    	InformationManager.address = mAddressTextArea.getText();
+    	InformationManager.phone = mPhoneTextField.getText();
+    	InformationManager.email = mEmailTextField.getText();
+    	InformationManager.website = mWebsiteTextField.getText();
     }
 }

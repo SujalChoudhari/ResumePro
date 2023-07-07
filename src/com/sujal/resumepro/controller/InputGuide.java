@@ -6,23 +6,27 @@ import javax.swing.JPanel;
 
 import com.sujal.resumepro.ui.ContactPanel;
 import com.sujal.resumepro.ui.EducationPanel;
+import com.sujal.resumepro.ui.ExperiencePanel;
 import com.sujal.resumepro.ui.IntroPanel;
 import com.sujal.resumepro.ui.MainFrame;
-import com.sujal.resumepro.ui.Progressable;
+import com.sujal.resumepro.ui.DataPanel;
+import com.sujal.resumepro.ui.SkillPanel;
 
 public class InputGuide {
 
 	MainFrame mMainFrame;
-	Vector<Progressable> mProgressables;
+	Vector<DataPanel> mDataPanels;
 	private int mCurrentIndex = -1;
 	
 	
 	public InputGuide() {
 		mMainFrame = new MainFrame("Resume Pro");
-		mProgressables = new Vector<Progressable>();
-		mProgressables.add(new IntroPanel(this));
-		mProgressables.add(new ContactPanel(this));
-		mProgressables.add(new EducationPanel(this));
+		mDataPanels = new Vector<DataPanel>();
+		mDataPanels.add(new ExperiencePanel(this));
+		mDataPanels.add(new SkillPanel(this));
+		mDataPanels.add(new IntroPanel(this));
+		mDataPanels.add(new ContactPanel(this));
+		mDataPanels.add(new EducationPanel(this));
 		next();
 	}
 	
@@ -31,8 +35,8 @@ public class InputGuide {
 		
 	}
 	
-	public void addNewAt(int index,Progressable panel) {
-		mProgressables.add(index, panel);
+	public void addNewAt(int index,DataPanel panel) {
+		mDataPanels.add(index, panel);
 	}
 	
 	public int getCurrentIndex() {
@@ -40,9 +44,9 @@ public class InputGuide {
 	}
 	
 	public void next() {
-		if(mCurrentIndex < mProgressables.size()) {
+		if(mCurrentIndex < mDataPanels.size()) {
 			mCurrentIndex ++;
-			mMainFrame.showPanel((JPanel) mProgressables.get(mCurrentIndex));
+			mMainFrame.showPanel((JPanel) mDataPanels.get(mCurrentIndex));
 
 		}
 		
@@ -51,7 +55,7 @@ public class InputGuide {
 	public void previous() {
 		if(mCurrentIndex >=0) {
 			mCurrentIndex --;
-			mMainFrame.showPanel((JPanel) mProgressables.get(mCurrentIndex));
+			mMainFrame.showPanel((JPanel) mDataPanels.get(mCurrentIndex));
 		}
 	}
 
