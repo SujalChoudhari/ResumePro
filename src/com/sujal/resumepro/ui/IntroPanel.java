@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class IntroPanel extends JPanel implements Progressable {
+public class IntroPanel extends JPanel implements DataPanel {
 	
 	private InputGuide mInputGuide;
 	

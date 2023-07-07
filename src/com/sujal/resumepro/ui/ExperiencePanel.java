@@ -16,7 +16,7 @@ import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
-public class EducationPanel extends JPanel implements DataPanel {
+public class ExperiencePanel extends JPanel implements DataPanel {
 
 	InputGuide mInputGuide;
 	private JTextField textField;
@@ -24,7 +24,7 @@ public class EducationPanel extends JPanel implements DataPanel {
 	private JTextField inputToTextField;
 	private JTextField textField_3;
 
-	public EducationPanel(InputGuide inputGuide) {
+	public ExperiencePanel(InputGuide inputGuide) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 450, 0 };
 		gridBagLayout.rowHeights = new int[] { 300, 0 };
@@ -43,7 +43,7 @@ public class EducationPanel extends JPanel implements DataPanel {
 		JPanel titlePanel = new JPanel();
 		mainPanel.add(titlePanel);
 
-		JLabel lblNewLabel = Factory.createTitleLabel("Education");
+		JLabel lblNewLabel = Factory.createTitleLabel("Experience");
 		titlePanel.add(lblNewLabel);
 
 		JPanel dataPanel = new JPanel();
@@ -71,7 +71,7 @@ public class EducationPanel extends JPanel implements DataPanel {
 		inputToTextField.setColumns(10);
 		dataPanel.add(inputToTextField);
 
-		JLabel lblNewLabel_2_1 = Factory.createLabel("Certificate");
+		JLabel lblNewLabel_2_1 = Factory.createLabel("Designation");
 		dataPanel.add(lblNewLabel_2_1);
 
 		textField_3 = Factory.createTextField(30);
@@ -92,12 +92,12 @@ public class EducationPanel extends JPanel implements DataPanel {
 		});
 		panel.add(prevButton);
 
-		JButton addButton = Factory.createButton("Add New Institute");
+		JButton addButton = Factory.createButton("Add New Exprience");
 		addButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mInputGuide.addNewAt(mInputGuide.getCurrentIndex() + 1, new EducationPanel(mInputGuide));
+				mInputGuide.addNewAt(mInputGuide.getCurrentIndex() + 1, new ExperiencePanel(mInputGuide));
 				next();
 			}
 		});
