@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import com.sujal.resumepro.ui.ContactPanel;
 import com.sujal.resumepro.ui.EducationPanel;
+import com.sujal.resumepro.ui.EndDataPanel;
 import com.sujal.resumepro.ui.ExperiencePanel;
 import com.sujal.resumepro.ui.IntroPanel;
 import com.sujal.resumepro.ui.MainFrame;
@@ -22,11 +23,12 @@ public class InputGuide {
 	public InputGuide() {
 		mMainFrame = new MainFrame("Resume Pro");
 		mDataPanels = new Vector<DataPanel>();
-		mDataPanels.add(new ExperiencePanel(this));
-		mDataPanels.add(new SkillPanel(this));
 		mDataPanels.add(new IntroPanel(this));
 		mDataPanels.add(new ContactPanel(this));
+		mDataPanels.add(new SkillPanel(this));
+		mDataPanels.add(new ExperiencePanel(this));
 		mDataPanels.add(new EducationPanel(this));
+		mDataPanels.add(new EndDataPanel(this));
 		next();
 	}
 	
@@ -56,6 +58,12 @@ public class InputGuide {
 		if(mCurrentIndex >=0) {
 			mCurrentIndex --;
 			mMainFrame.showPanel((JPanel) mDataPanels.get(mCurrentIndex));
+		}
+	}
+	
+	public void updateData() {
+		for(DataPanel panel: mDataPanels) {
+			panel.updateData();
 		}
 	}
 

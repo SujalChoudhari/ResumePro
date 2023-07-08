@@ -4,6 +4,7 @@ package com.sujal.resumepro.ui;
 import javax.swing.*;
 
 import com.sujal.resumepro.controller.InputGuide;
+import com.sujal.resumepro.converter.CollectedData;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,7 @@ import java.awt.event.ActionListener;
 public class IntroPanel extends JPanel implements DataPanel {
 	
 	private InputGuide mInputGuide;
+	private JTextField mNameTextField;
 	
     public IntroPanel(InputGuide inputGuide) {
     	mInputGuide = inputGuide;
@@ -27,9 +29,9 @@ public class IntroPanel extends JPanel implements DataPanel {
 
         JPanel centerPanel = Factory.createPanel();
         centerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        JTextField nameTextField = Factory.createTextField(18);
+        mNameTextField = Factory.createTextField(18);
         centerPanel.add(new JLabel("What is your name? "));
-        centerPanel.add(nameTextField);
+        centerPanel.add(mNameTextField);
         
         JPanel bottomPanel = Factory.createPanel();
         JButton nextButton = Factory.createButton("Next");
@@ -58,6 +60,11 @@ public class IntroPanel extends JPanel implements DataPanel {
 	@Override
 	public void previous() {
 		mInputGuide.previous();
+	}
+	
+	@Override
+	public void updateData() {
+		CollectedData.name = mNameTextField.getText();
 	}
 	
 	

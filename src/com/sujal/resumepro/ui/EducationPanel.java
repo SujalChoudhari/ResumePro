@@ -4,6 +4,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.sujal.resumepro.controller.InputGuide;
+import com.sujal.resumepro.converter.CollectedData;
+import com.sujal.resumepro.converter.EducationData;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -122,6 +125,15 @@ public class EducationPanel extends JPanel implements DataPanel {
 	@Override
 	public void previous() {
 		mInputGuide.previous();
+	}
+	
+	@Override
+	public void updateData() {
+		CollectedData.addEducationData(new EducationData(
+				textField.getText(),
+				inputFromTextField.getText(),
+				inputToTextField.getText(),
+				textField_3.getText()));
 	}
 
 }

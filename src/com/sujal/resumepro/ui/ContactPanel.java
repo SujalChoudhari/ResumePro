@@ -1,7 +1,7 @@
 package com.sujal.resumepro.ui;
 
 import com.sujal.resumepro.controller.InputGuide;
-import com.sujal.resumepro.converter.InformationManager;
+import com.sujal.resumepro.converter.CollectedData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -108,9 +108,9 @@ public class ContactPanel extends JPanel implements DataPanel {
     
     @Override
     public void updateData() {
-    	InformationManager.address = mAddressTextArea.getText();
-    	InformationManager.phone = mPhoneTextField.getText();
-    	InformationManager.email = mEmailTextField.getText();
-    	InformationManager.website = mWebsiteTextField.getText();
+    	CollectedData.address = mAddressTextArea.getText();
+    	CollectedData.phone = mPhoneTextField.getText();
+    	CollectedData.email = mEmailTextField.getText();
+    	CollectedData.website = mWebsiteTextField.getText();
     }
 }
