@@ -3,6 +3,7 @@ package com.sujal.resumepro.ui;
 import javax.swing.JPanel;
 
 import com.sujal.resumepro.controller.InputGuide;
+import com.sujal.resumepro.converter.PdfConverter;
 
 import javax.swing.JLabel;
 
@@ -37,6 +38,17 @@ public class EndDataPanel extends JPanel implements DataPanel {
 		panel_1.add(lblNewLabel_1);
 		
 		JPanel bottomPanel = Factory.createPanel();
+		JButton prevButton = Factory.createButton("Previous");
+        prevButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				previous();
+			}
+        	
+        });
+        bottomPanel.add(prevButton);
         JButton nextButton = Factory.createButton("Print");
         nextButton.addActionListener(new ActionListener() {
 
@@ -48,6 +60,8 @@ public class EndDataPanel extends JPanel implements DataPanel {
         	
         });
         bottomPanel.add(nextButton);
+        
+        
         panel_2.add(bottomPanel);
 
 	}
@@ -55,6 +69,7 @@ public class EndDataPanel extends JPanel implements DataPanel {
 	@Override
 	public void next() {
 		mInputGuide.updateData();
+		PdfConverter.run();
 	}
 
 	@Override

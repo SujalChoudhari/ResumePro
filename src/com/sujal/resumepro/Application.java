@@ -8,5 +8,4 @@ public class Application {
 		InputGuide inputGuide = new InputGuide();
 		inputGuide.start();
 	}
-
 }

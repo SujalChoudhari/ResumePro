@@ -1,5 +1,4 @@
 package com.sujal.resumepro.converter;
-
 import java.util.ArrayList;
 import java.util.Vector;
 
